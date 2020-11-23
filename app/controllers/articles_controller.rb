@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-    before_action :logged_in_user, only: [:create, :destroy]
+    before_action :logged_in_user, only: [:create, :destroy, :like]
     before_action :correct_user, only: :destroy
     def create
         @article = current_user.articles.build(article_params)
@@ -24,6 +24,16 @@ class ArticlesController < ApplicationController
             render 'static_pages/home'
         end
     end
+
+    def like
+        @article = Article.find(params[:id])
+        if current_user.voted_for? @article
+            @article.unliked_by current_user
+        else 
+            @article.liked_by current_user
+        end
+    end
+
     private
     def article_params
         params.require(:article).permit(:content, :image)

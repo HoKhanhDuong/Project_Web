@@ -6,6 +6,12 @@
         <%= image_tag article.image_url.to_s %>
     </span>
     <span class="timestamp">
+        <div id="like-count">
+            <%= render 'articles/likes', article: article%>
+        </div>
+        <div id="like-link">
+            <%= render 'articles/like_link', article: article%>
+        </div>
         Posted <%= time_ago_in_words(article.created_at) %> ago.
         <% if current_user?(article.user) %>
             <%= link_to "delete", article, method: :delete,data: { confirm: "You sure?" } %>

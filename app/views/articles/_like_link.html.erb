@@ -1,0 +1,8 @@
+<% if current_user %>
+    <% vote_text = current_user&.voted_for?(article) ? "Unlike" : "Like"%>
+    <div style="width: 60px"> 
+        <%= button_to vote_text, like_article_path(article.id), method: :put, remote: :true, class: 'like-post'%>
+    </div>
+<%else%>
+<%= link_to "Like", new_user_session_path, class: 'like-post'%>
+<%end%>

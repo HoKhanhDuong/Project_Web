@@ -23,4 +23,9 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
+  resources :articles do
+    member do
+      put 'like' => 'articles#like'
+    end
+  end
 end
