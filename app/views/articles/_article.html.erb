@@ -16,5 +16,6 @@
         <% if current_user?(article.user) %>
             <%= link_to "delete", article, method: :delete,data: { confirm: "You sure?" } %>
         <% end %>
+        <%= render 'articles/comment', article: article%>
     </span>
 </li>

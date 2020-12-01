@@ -1,0 +1,5 @@
+<h2 class="subtitle is-5"><strong><%= article.comments.count%></strong>Comments</h2>
+<%= render article.comments%>
+<div class="comment-form">
+<hr/>
+<%= render 'comments/form', article: article%>

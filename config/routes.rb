@@ -28,4 +28,7 @@ Rails.application.routes.draw do
       put 'like' => 'articles#like'
     end
   end
+  resources :articles do
+    resources :comments
+  end
 end
